@@ -8,15 +8,21 @@ first:
   stage: first_job
   script:
     - echo "Mon premier job"
+  tags:
+    - cli
 
 second:
   stage: second_job
   needs: ["first"]
   script:
     - echo "Mon second job"
+  tags:
+    - cli
 
 third:
   stage: third_job
   needs: ["second"]
   script:
     - echo "Mon job final"
+  tags:
+    - conteneur
