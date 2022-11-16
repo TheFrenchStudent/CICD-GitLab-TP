@@ -2,12 +2,12 @@ stages:
   - first_job
   - second_job
 
-first_job:
+first:
   stage: first_job
   script:
     - echo "Mon premier job"
 
-second_job:
+second:
   stage: second_job
   script:
     - echo "Mon second job"
