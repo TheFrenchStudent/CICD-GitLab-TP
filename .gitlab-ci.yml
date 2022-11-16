@@ -1,8 +1,7 @@
-# Pipeline runners GitLab
+# Pipeline jobs
 stages:
   - first_job
   - second_job
-  - third_job
 
 first:
   stage: first_job
@@ -12,17 +11,17 @@ first:
     - cli
 
 second:
-  stage: second_job
-  needs: ["first"]
+  stage: first_job
   script:
     - echo "Mon second job"
   tags:
     - cli
 
 third:
-  stage: third_job
-  needs: ["second"]
+  stage: second_job
   script:
     - echo "Mon job final"
   tags:
     - conteneur
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
