@@ -1,7 +1,8 @@
-# Pipeline runner-shell
+# Pipeline
 stages:
   - first_job
   - second_job
+  - third_job
 
 first:
   stage: first_job
@@ -10,5 +11,12 @@ first:
 
 second:
   stage: second_job
+  needs: ["first"]
   script:
     - echo "Mon second job"
+
+third:
+  stage: third_job
+  needs: ["second"]
+  script:
+    - echo "Mon job final"
